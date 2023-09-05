@@ -1,13 +1,14 @@
 import Header from "@/components/Header";
+import Board from "@/components/Board";
 
 export default function Home() {
-  return (
-    <main className="">
-        {/* Header */}
-        <Header />
+    return (
+        <main className="">
+            {/* Header */}
+            <Header/>
 
-        {/* Board */}
-        <h1>Trello Sample</h1>
-    </main>
-  )
+            {/* Board */}
+            <Board/>
+        </main>
+    )
 }
