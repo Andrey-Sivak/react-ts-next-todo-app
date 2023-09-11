@@ -2,6 +2,9 @@ import {Todo, TypedColumn} from "@/typings";
 import {DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 import {XCircleIcon} from "@heroicons/react/24/solid";
 import {useBoardStore} from "@/store/BoardStore";
+import {useEffect, useState} from "react";
+import getUrl from "@/lib/getUrl";
+import Image from "next/image";
 
 type Props = {
     todo: Todo;
@@ -13,7 +16,21 @@ type Props = {
 }
 
 const TodoCard = ({todo, index, id, innerRef, draggableProps, dragHandleProps}: Props) => {
-    const deleteTask = useBoardStore((state) => state.deleteTodo)
+    const deleteTask = useBoardStore((state) => state.deleteTodo);
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (todo.image) {
+            const fetchImage = async () => {
+                const url = await getUrl(todo.image!);
+                if (url) {
+                    setImageUrl(url.toString());
+                }
+            }
+
+            fetchImage();
+        }
+    }, [todo]);
 
     return (
         <div
@@ -32,10 +49,18 @@ const TodoCard = ({todo, index, id, innerRef, draggableProps, dragHandleProps}: 
                 </button>
             </div>
 
-            {todo.s}
 
-            {todo.image && (
-                <div></div>
+
+            {imageUrl && (
+                <div className="h-full w-full rounded-b-md">
+                    <Image
+                        src={imageUrl}
+                        width={400}
+                        height={200}
+                        className="w-full object-contain rounded-b-md"
+                        alt="Task Image"
+                    />
+                </div>
             )}
         </div>
     )
