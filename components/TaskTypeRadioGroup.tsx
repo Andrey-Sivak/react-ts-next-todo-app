@@ -1,24 +1,25 @@
 'use client';
 
-import { RadioGroup } from '@headlessui/react'
+import {RadioGroup} from '@headlessui/react'
 import {useBoardStore} from "@/store/BoardStore";
 import {CheckCircleIcon} from "@heroicons/react/24/solid";
+import {ETypedColumn} from "@/typings";
 
 const types = [
     {
-        id: 'todo',
+        id: ETypedColumn.Todo,
         name: 'Todo',
         description: 'A new task to be completed',
         color: 'bg-red-500'
     },
     {
-        id: 'inprogress',
+        id: ETypedColumn.InProgress,
         name: 'In progress',
         description: 'A task that is currently being worked on',
         color: 'bg-yellow-500'
     },
     {
-        id: 'done',
+        id: ETypedColumn.Done,
         name: 'Done',
         description: 'A task that has been completed',
         color: 'bg-green-500'

@@ -1,35 +1,36 @@
 import {create} from 'zustand'
 import {getTodosGroupedByColumn} from "@/lib/getTodosGroupedByColumn";
-import {Board, Column, Image, Todo, TypedColumn} from "@/typings";
+import {Board, Column, ETypedColumn, Image, Todo} from "@/typings";
 import {databases, ID, storage} from "@/appwrite";
 import uploadImage from "@/lib/uploadImage";
 
 // import { devtools, persist } from 'zustand/middleware'
 
 interface BoardState {
+    searchString: string;
+    // Todo: move to modalStore
+    newTaskInput: string;
+    newTaskType: ETypedColumn;
+    image: File | null;
     board: Board;
     getBoard: () => void;
     setBoardState: (board: Board) => void;
-    updateTodoInDB: (todo: Todo, columnId: TypedColumn) => void;
-    searchString: string;
+    updateTodoInDB: (todo: Todo, columnId: ETypedColumn) => void;
     setSearchString: (searchString: string) => void;
-    deleteTodo: (taskIndex: number, todo: Todo, id: TypedColumn) => void;
-    newTaskInput: string;
+    deleteTodo: (taskIndex: number, todo: Todo, id: ETypedColumn) => void;
     setNewTaskInput: (newTaskInput: string) => void;
-    newTaskType: TypedColumn,
-    setNewTaskType: (columnId: TypedColumn) => void;
-    image: File | null;
+    setNewTaskType: (columnId: ETypedColumn) => void;
     setImage: (image: File | null) => void;
-    addTodo: (todo: string, columnId: TypedColumn, image?: File | null) => void;
+    addTodo: (todo: string, columnId: ETypedColumn, image?: File | null) => void;
 }
 
 export const useBoardStore = create<BoardState>((set, get) => ({
     board: {
-        columns: new Map<TypedColumn, Column>()
+        columns: new Map<ETypedColumn, Column>()
     },
     searchString: '',
     newTaskInput: '',
-    newTaskType: 'todo',
+    newTaskType: ETypedColumn.Todo,
     image: null,
 
     setSearchString(searchString) {
@@ -69,7 +70,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         )
     },
 
-    async addTodo(todo: string, columnId: TypedColumn, image?: File | null) {
+    async addTodo(todo, columnId, image?) {
         let file: Image | undefined;
 
         if (image) {
@@ -97,13 +98,14 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         set((state) => {
             const newColumns = new Map(state.board.columns);
 
-            const newTodo: Todo = {
+            // Todo: add missing properties and remove 'as Todo'
+            const newTodo/*: Todo*/ = {
                 $id,
                 $createdAt: new Date().toISOString(),
                 title: todo,
                 status: columnId,
                 ...(file && {image: file})
-            }
+            } as Todo;
 
             const column = newColumns.get(columnId);
 

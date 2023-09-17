@@ -1,4 +1,4 @@
-import {Todo, TypedColumn} from "@/typings";
+import {ETypedColumn, Todo} from "@/typings";
 import {DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 import {XCircleIcon} from "@heroicons/react/24/solid";
 import {useBoardStore} from "@/store/BoardStore";
@@ -9,7 +9,7 @@ import Image from "next/image";
 type Props = {
     todo: Todo;
     index: number;
-    id: TypedColumn;
+    id: ETypedColumn;
     innerRef: (element: HTMLElement | null) => void;
     draggableProps: DraggableProvidedDraggableProps;
     dragHandleProps: DraggableProvidedDragHandleProps | null | undefined;

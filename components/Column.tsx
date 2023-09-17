@@ -1,22 +1,22 @@
 import {Draggable, Droppable} from "react-beautiful-dnd";
-import {Todo, TypedColumn} from "@/typings";
+import {ETypedColumn, Todo} from "@/typings";
 import {PlusCircleIcon} from "@heroicons/react/24/solid";
 import TodoCard from "@/components/TodoCard";
 import {useBoardStore} from "@/store/BoardStore";
 import {useModalStore} from "@/store/ModalStore";
 
 type Props = {
-    id: TypedColumn,
+    id: ETypedColumn,
     todos: Todo[],
     index: number
 }
 
 const idToColumnText: {
-    [key in TypedColumn]: string
+    [key in ETypedColumn]: string
 } = {
-    'todo': 'To Do',
-    'inprogress': 'In Progress',
-    'done': 'Done',
+    [ETypedColumn.Todo]: 'To Do',
+    [ETypedColumn.InProgress]: 'In Progress',
+    [ETypedColumn.Done]: 'Done',
 }
 
 const Column = ({id, todos, index}: Props) => {

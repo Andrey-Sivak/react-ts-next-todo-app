@@ -1,5 +1,5 @@
 import {databases} from "@/appwrite";
-import {Board, Column, TypedColumn} from "@/typings";
+import {Board, Column, ETypedColumn} from "@/typings";
 
 export const getTodosGroupedByColumn = async () => {
     const data = await databases.listDocuments(
@@ -10,26 +10,30 @@ export const getTodosGroupedByColumn = async () => {
     const todos = data.documents;
 
     const columns = todos.reduce((acc, todo) => {
-        if (!acc.get(todo.status)) {
-            acc.set(todo.status, {
-                id: todo.status,
-                todos: []
+        const status = todo.status as ETypedColumn;
+
+        if (!acc.get(status)) {
+            acc.set(status, {
+                id: status,
+                todos: [],
             })
         }
 
-        acc.get(todo.status)!.todos.push({
+        (acc.get(status) as Column)!.todos.push({
             $id: todo.$id,
             $createdAt: todo.$createdAt,
             title: todo.title,
-            status: todo.status,
+            status: status,
             // get the image if it exist on the todo
             ...(todo.image && {image: JSON.parse(todo.image)})
         });
 
         return acc;
-    }, new Map<TypedColumn, Column>);
+    }, new Map<ETypedColumn, Column>);
 
-    const columnTypes: TypedColumn[] = ['todo', 'inprogress', 'done'];
+    /** Add empty columns for statuses without todos */
+    const columnTypes = Object.values(ETypedColumn);
+
     columnTypes.forEach((columnType) => {
         if (!columns.has(columnType)) {
             columns.set(columnType, {
