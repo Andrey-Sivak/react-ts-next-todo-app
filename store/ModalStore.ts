@@ -1,5 +1,4 @@
 import {create} from 'zustand';
-import {databases, storage} from "@/appwrite";
 
 interface ModalState {
     isOpen: boolean;

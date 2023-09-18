@@ -4,8 +4,6 @@ import {Board, Column, ETypedColumn, Image, Todo} from "@/typings";
 import {databases, ID, storage} from "@/appwrite";
 import uploadImage from "@/lib/uploadImage";
 
-// import { devtools, persist } from 'zustand/middleware'
-
 interface BoardState {
     searchString: string;
     // Todo: move to modalStore
