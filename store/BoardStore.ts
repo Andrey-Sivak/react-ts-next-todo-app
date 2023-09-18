@@ -13,15 +13,15 @@ interface BoardState {
     newTaskType: ETypedColumn;
     image: File | null;
     board: Board;
-    getBoard: () => void;
-    setBoardState: (board: Board) => void;
-    updateTodoInDB: (todo: Todo, columnId: ETypedColumn) => void;
-    setSearchString: (searchString: string) => void;
-    deleteTodo: (taskIndex: number, todo: Todo, id: ETypedColumn) => void;
-    setNewTaskInput: (newTaskInput: string) => void;
-    setNewTaskType: (columnId: ETypedColumn) => void;
-    setImage: (image: File | null) => void;
-    addTodo: (todo: string, columnId: ETypedColumn, image?: File | null) => void;
+    getBoard(): void;
+    setBoardState(board: Board): void;
+    updateTodoInDB(todo: Todo, columnId: ETypedColumn): void;
+    setSearchString(searchString: string): void;
+    deleteTodo(taskIndex: number, todo: Todo, id: ETypedColumn): void;
+    setNewTaskInput(newTaskInput: string): void;
+    setNewTaskType(columnId: ETypedColumn): void;
+    setImage(image: File | null): void;
+    addTodo(todo: string, columnId: ETypedColumn, image?: File | null): void;
 }
 
 export const useBoardStore = create<BoardState>((set, get) => ({
