@@ -32,6 +32,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set OpenAI API key
+        run: |
+          echo "$OPENAI_API_KEY" >> $GITHUB_ENV
+          echo "$NEXT_PUBLIC_DATABASE_ID" >> $GITHUB_ENV
+          echo "$NEXT_PUBLIC_APPWRITE_PROJECT_ID" >> $GITHUB_ENV
+          echo "$NEXT_PUBLIC_TODOS_COLLECTION_ID" >> $GITHUB_ENV
       - name: Detect package manager
         id: detect-package-manager
         run: |
