@@ -4,15 +4,15 @@
 
 ## Tools Used
 
-<img src="./presentation/js.png" width="100" height="100" />&nbsp;
-<img src="./presentation/ts.svg" width="100" height="100" />&nbsp;
-<img src="./presentation/next.webp" width="100" height="100" />&nbsp;
-<img src="./presentation/react.png" width="100" height="100" />&nbsp;
-<img src="./presentation/react-dnd.png" width="100" height="68.55" />&nbsp;
-<img src="./presentation/zustand.png" width="100" height="100" />&nbsp;
-<img src="./presentation/tailwind.svg" width="100" height="100" />&nbsp;
-<img src="./presentation/headlessui.png" width="100" height="100" />&nbsp;
-<img src="./presentation/appwrite.svg" width="100" height="100" />
+<img src="./presentation/js.png" width="75" height="75" />&nbsp;
+<img src="./presentation/ts.svg" width="75" height="75" />&nbsp;
+<img src="./presentation/next.webp" width="75" height="75" />&nbsp;
+<img src="./presentation/react.png" width="75" height="75" />&nbsp;
+<img src="./presentation/react-dnd.png" width="75" height="51" />&nbsp;
+<img src="./presentation/zustand.png" width="75" height="75" />&nbsp;
+<img src="./presentation/tailwind.svg" width="75" height="75" />&nbsp;
+<img src="./presentation/headlessui.png" width="75" height="75" />&nbsp;
+<img src="./presentation/appwrite.svg" width="75" height="75" />
 
 ✔️ JavaScript\
 ✔️ TypeScript\
