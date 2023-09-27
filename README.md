@@ -8,7 +8,7 @@
 <img src="./presentation/ts.svg" width="75" height="75" />&nbsp;
 <img src="./presentation/next.webp" width="75" height="75" />&nbsp;
 <img src="./presentation/react.png" width="75" height="75" />&nbsp;
-<img src="./presentation/react-dnd.png" width="75" height="51" />&nbsp;
+<img src="./presentation/react-dnd.png" width="110" height="75" />&nbsp;
 <img src="./presentation/zustand.png" width="75" height="75" />&nbsp;
 <img src="./presentation/tailwind.svg" width="75" height="75" />&nbsp;
 <img src="./presentation/headlessui.png" width="75" height="75" />&nbsp;
